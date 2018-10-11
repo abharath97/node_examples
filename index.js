@@ -7,16 +7,19 @@ var rect=require('./rectangle');
 function findvals (l,b)
 {
     console.log("Solving for rectangle l="+l+ "an b = "+b);
-    if(l<=0 || b <=0)
-    {
-        console.log("Rectangle is pointless as dimensions are null !!!");
-    }
-    else
-    {
-        console.log("The area of rectangle is :"+rect.area(l,b));
-        console.log("The perimeter of the rectangle :"+rect.perimeter(l,b));
+    
+    rect(l,b,(err,rectangle)=>{
+        if(err)
+        {
+            console.log("ERROR : "+err.message);
+        }
+        else
+        {
+            console.log(" perimeter :"+rectangle.perimeter()+" area :"+rectangle.area());
 
-    }
+        }
+    });
+    console.log("This statement is after the call to rect()");
 }
 
 findvals(3,7);
